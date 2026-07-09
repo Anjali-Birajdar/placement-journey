@@ -10,3 +10,7 @@ name1 = "A man, a plan, a canal: Panama"
 name2 = "Anna is a mad man"
 print(Solution().isPalindrome(name1))
 print(Solution().isPalindrome(name2))
+
+# lets understand the logic behind this code
+# class is defined here in this case the class is solution with object in brackets
+# def the palindrome with self and s as a variable in brackets
