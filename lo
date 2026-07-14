@@ -1,0 +1,168 @@
+[1mdiff --git a/DSA/Valid Palindrome.py b/DSA/Valid Palindrome.py[m
+[1mindex 592b64e..4832075 100644[m
+[1m--- a/DSA/Valid Palindrome.py[m	
+[1m+++ b/DSA/Valid Palindrome.py[m	
+[36m@@ -10,3 +10,7 @@[m [mname1 = "A man, a plan, a canal: Panama"[m
+ name2 = "Anna is a mad man"[m
+ print(Solution().isPalindrome(name1))[m
+ print(Solution().isPalindrome(name2))[m
+[32m+[m
+[32m+[m[32m# lets understand the logic behind this code[m
+[32m+[m[32m# class is defined here in this case the class is solution with object in brackets[m
+[32m+[m[32m# def the palindrome with self and s as a variable in brackets[m
+[1mdiff --git a/Expense_Tracker_-Python- b/Expense_Tracker_-Python-[m
+[1m--- a/Expense_Tracker_-Python-[m
+[1m+++ b/Expense_Tracker_-Python-[m
+[36m@@ -1 +1 @@[m
+[31m-Subproject commit 9d7a08902e9cef126d0318fa240a8fc8cc3a343c[m
+[32m+[m[32mSubproject commit 9d7a08902e9cef126d0318fa240a8fc8cc3a343c-dirty[m
+[1mdiff --git a/Projects/Expense_tracker.py b/Projects/Expense_tracker.py[m
+[1mindex 04e1865..dc17aa2 100644[m
+[1m--- a/Projects/Expense_tracker.py[m
+[1m+++ b/Projects/Expense_tracker.py[m
+[36m@@ -1,75 +1,96 @@[m
+ expenses = [][m
+[32m+[m[32mnext_id = 1[m
+ [m
+ [m
+ def add_expense():[m
+[31m-[m
+[32m+[m[32m    global next_id[m
+[32m+[m[32m    category = input("Enter category: ")[m
+     name = input("Enter expense name: ")[m
+[31m-    amount = float(input("Enter the amount spent: "))[m
+[31m-[m
+[31m-    expense = {"name": name, "amount": amount}[m
+[31m-[m
+[31m-    print("Expense added!")[m
+ [m
+[32m+[m[32m    while True:[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            amount = float(input("Enter the amount spent: "))[m
+[32m+[m[32m            break[m
+[32m+[m[32m        except ValueError:[m
+[32m+[m[32m            print("Invalid amount.")[m
+[32m+[m[32m            print("Please enter a valid number.")[m
+[32m+[m
+[32m+[m[32m    expense = {[m
+[32m+[m[32m        "id": next_id,[m
+[32m+[m[32m        "category": category,[m
+[32m+[m[32m        "name": name,[m
+[32m+[m[32m        "amount": amount[m
+[32m+[m[32m    }[m
+     expenses.append(expense)[m
+[32m+[m[32m    next_id += 1[m
+[32m+[m[32m    print(f"Expense added successfully! Expense ID: {expense['id']}")[m
+ [m
+ [m
+ def view_expenses():[m
+[32m+[m[32m    if len(expenses) == 0:[m
+[32m+[m[32m        print("No expense found.")[m
+[32m+[m[32m        return[m
+ [m
+     for expense in expenses:[m
+[31m-[m
+         print("------------------------")[m
+[32m+[m[32m        print(f"ID: {expense['id']}")[m
+[32m+[m[32m        print(f"Category: {expense['category']}")[m
+         print(f"Expense: {expense['name']}")[m
+         print(f"Amount: ${expense['amount']}")[m
+ [m
+[31m-        if len(expenses) == 0:[m
+[31m-            print("No expense found:")[m
+[31m-[m
+ [m
+ def total_expenses():[m
+[32m+[m[32m    if len(expenses) == 0:[m
+[32m+[m[32m        print("No expense found.")[m
+[32m+[m[32m        return[m
+ [m
+     total = 0[m
+     for expense in expenses:[m
+         total += expense['amount'][m
+[31m-        print(f"Total expenses: ${total}")[m
+[31m-[m
+[31m-        if len(expenses) == 0:[m
+[31m-            print("No expense found:")[m
+[32m+[m[32m    print(f"Total expenses: ${total}")[m
+ [m
+ [m
+ def search_expense():[m
+[31m-[m
+[31m-    search_name = input("Enter the name of the expense: ")[m
+[32m+[m[32m    while True:[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            search_id = int(input("Enter Expense ID: "))[m
+[32m+[m[32m            break[m
+[32m+[m[32m        except ValueError:[m
+[32m+[m[32m            print("Please enter a valid ID.")[m
+     found = False[m
+ [m
+     for expense in expenses:[m
+[31m-        if expense['name'].lower() == search_name.lower():[m
+[32m+[m[32m        if expense["id"] == search_id:[m
+             print(f"Expense: {expense['name']}")[m
+             print(f"Amount: ${expense['amount']}")[m
+             found = True[m
+             break[m
+ [m
+[31m-        if not found:[m
+[31m-            print("Expense not in database")[m
+[32m+[m[32m    if not found:[m
+[32m+[m[32m        print("Expense not in database")[m
+ [m
+ [m
+ def remove_expense():[m
+[31m-[m
+[31m-    expense_name = input("Enter the expense you wish to remove: ")[m
+[32m+[m[32m    while True:[m
+[32m+[m[32m        try:[m
+[32m+[m[32m            remove_id = int(input("Enter Expense ID to remove: "))[m
+[32m+[m[32m            break[m
+[32m+[m[32m        except ValueError:[m
+[32m+[m[32m            print("Please enter a valid ID.")[m
+     found = False[m
+ [m
+     for expense in expenses:[m
+[31m-        if expense['name'].lower() == expense_name.lower():[m
+[32m+[m[32m        if expense["id"] == remove_id:[m
+             expenses.remove(expense)[m
+[31m-            print(f"{expense_name} has been successfully removed!")[m
+[32m+[m[32m            print(f"Expense ID {remove_id} has been successfully removed!")[m
+             found = True[m
+             break[m
+ [m
+[31m-        if not found:[m
+[31m-            print("Expense not found")[m
+[32m+[m[32m    if not found:[m
+[32m+[m[32m        print("Expense not found")[m
+ [m
+ [m
+ while True:[m
+[31m-[m
+     print("---------- Expense Tracker ------------")[m
+     print("1. Add Expense")[m
+     print("2. View Expenses")[m
+[36m@@ -82,22 +103,16 @@[m [mwhile True:[m
+ [m
+     if choice == "1":[m
+         add_expense()[m
+[31m-[m
+     elif choice == "2":[m
+         view_expenses()[m
+[31m-[m
+     elif choice == "3":[m
+         total_expenses()[m
+[31m-[m
+     elif choice == "4":[m
+         search_expense()[m
+[31m-[m
+     elif choice == "5":[m
+         remove_expense()[m
+[31m-[m
+     elif choice == "6":[m
+         print("Exited from the program")[m
+         break[m
+[31m-[m
+     else:[m
+         print("Invalid choice")[m
